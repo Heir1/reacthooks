@@ -1,10 +1,9 @@
-import FunctionState from "./Components/FunctionState";
+import Todo from "./Components/Todo";
 
 function App() {
   return (
-    <div align="center">
-        <h1>Use Hooks</h1>  
-        <FunctionState/>   
+    <div className="container">
+        <Todo/>   
     </div>
   );
 }
