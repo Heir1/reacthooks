@@ -1,9 +1,9 @@
-import Todo from "./Components/Todo";
+import FunctionCount from "./Components/FunctionCount";
 
 function App() {
   return (
-    <div className="container">
-        <Todo/>   
+    <div className="container"> 
+      <FunctionCount/>  
     </div>
   );
 }
