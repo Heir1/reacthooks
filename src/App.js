@@ -1,9 +1,10 @@
 import FunctionCount from "./Components/FunctionCount";
+import Container from "./Components/Container";
 
 function App() {
   return (
-    <div className="container"> 
-      <FunctionCount/>  
+    <div className="container">
+      <Container/> 
     </div>
   );
 }
