@@ -3,6 +3,8 @@ import Container from "./Components/Container";
 import React,{Component} from "react";
 import Profile from "./Contexte/Profile";
 import {UserContext, ColorContext} from './Contexte/MyContext';
+import Count from "./Reducers/Count";
+import Count1 from "./Reducers/Count1";
 
 class App extends Component {
   constructor(props) {
@@ -19,11 +21,12 @@ class App extends Component {
   render(){
     return (
       <div className="container">
-      <UserContext.Provider value={this.state.user}>
+        <Count1/>
+      {/* <UserContext.Provider value={this.state.user}>
         <ColorContext.Provider value={'red'}>
           <Profile/>
         </ColorContext.Provider>
-      </UserContext.Provider>
+      </UserContext.Provider> */}
         {/* <Container/>  */}
       </div>
     )
