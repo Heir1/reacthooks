@@ -1,6 +1,6 @@
 import FunctionCount from "./Components/FunctionCount";
 import Container from "./Components/Container";
-import React,{Component, useState, useCallback, useEffect} from "react";
+import React,{Component, useState, useCallback, useEffect, useMemo} from "react";
 // import Profile from "./Contexte/Profile";
 import {UserContext, ColorContext} from './Contexte/MyContext';
 // import Count from "./Reducers/Count";
@@ -13,24 +13,40 @@ import axios from 'axios'
 const App = () => {
 
   const [count, setCount] = useState(1);
-  const [profile, setProfile] = useState({})
+  const [profile, setProfile] = useState({});
+  const [dark, setDark] = useState(false);
 
   useEffect(() => {
     axios
-    .get()
+    .get(`https://jsonplaceholder.typicode.com/users/${count}`)
     .then(response => {
       setProfile(response.data);
     })
     .catch(err => {
       console.log(err)
     })
+  }, [count]);
+
+  const buttonTheme = !dark ? "btn-dark" : "btn-light";
+
+  const isOverTen = useMemo(() => {
+    console.log("Je suis dans isOverTen");
+    return count > 10
   }, [count])
+
+  console.log(isOverTen)
+
+  const goDark = () => {
+      setDark(!dark);
+      !dark ? document.body.classList.add("bg-secondary") : document.body.classList.remove("bg-secondary");
+  }
 
   return (
     <div className="container">
       <h1 className="text-center">useMemo()</h1>
+      {isOverTen && <div className="alert alert-danger">STOP !!!</div>}
       <button className="btn btn-info mb-3" onClick={() => setCount(count+1)} >increment {count} </button>
-      <button className="btn btn-dark mb-3 float-right">Modifier</button>
+      <button className={`btn ${buttonTheme} mb-3 float-right`} onClick={goDark}>{dark ? "Eclairer" : "Sombrir"}</button>
       <Profile count={count} profile={profile}/>
     </div>
   )
