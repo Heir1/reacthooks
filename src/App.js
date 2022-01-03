@@ -9,47 +9,56 @@ import Count1 from "./Reducers/Count1";
 import Button  from "./Callback/Button";
 import Profile from "./Memo/Profile";
 import axios from 'axios'
+import Input from "./Ref/Input";
+import Title from "./Ref/Title";
 
 const App = () => {
 
-  const [count, setCount] = useState(1);
-  const [profile, setProfile] = useState({});
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    axios
-    .get(`https://jsonplaceholder.typicode.com/users/${count}`)
-    .then(response => {
-      setProfile(response.data);
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }, [count]);
-
-  const buttonTheme = !dark ? "btn-dark" : "btn-light";
-
-  const isOverTen = useMemo(() => {
-    console.log("Je suis dans isOverTen");
-    return count > 10
-  }, [count])
-
-  console.log(isOverTen)
-
-  const goDark = () => {
-      setDark(!dark);
-      !dark ? document.body.classList.add("bg-secondary") : document.body.classList.remove("bg-secondary");
-  }
-
   return (
-    <div className="container">
-      <h1 className="text-center">useMemo()</h1>
-      {isOverTen && <div className="alert alert-danger">STOP !!!</div>}
-      <button className="btn btn-info mb-3" onClick={() => setCount(count+1)} >increment {count} </button>
-      <button className={`btn ${buttonTheme} mb-3 float-right`} onClick={goDark}>{dark ? "Eclairer" : "Sombrir"}</button>
-      <Profile count={count} profile={profile}/>
-    </div>
+      <div className="container">
+        {/* <Title/> */}
+        <Input/>
+      </div>
   )
+
+  // const [count, setCount] = useState(1);
+  // const [profile, setProfile] = useState({});
+  // const [dark, setDark] = useState(false);
+
+  // useEffect(() => {
+  //   axios
+  //   .get(`https://jsonplaceholder.typicode.com/users/${count}`)
+  //   .then(response => {
+  //     setProfile(response.data);
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+  // }, [count]);
+
+  // const buttonTheme = !dark ? "btn-dark" : "btn-light";
+
+  // const isOverTen = useMemo(() => {
+  //   console.log("Je suis dans isOverTen");
+  //   return count > 10
+  // }, [count])
+
+  // console.log(isOverTen)
+
+  // const goDark = () => {
+  //     setDark(!dark);
+  //     !dark ? document.body.classList.add("bg-secondary") : document.body.classList.remove("bg-secondary");
+  // }
+
+  // return (
+  //   <div className="container">
+  //     <h1 className="text-center">useMemo()</h1>
+  //     {isOverTen && <div className="alert alert-danger">STOP !!!</div>}
+  //     <button className="btn btn-info mb-3" onClick={() => setCount(count+1)} >increment {count} </button>
+  //     <button className={`btn ${buttonTheme} mb-3 float-right`} onClick={goDark}>{dark ? "Eclairer" : "Sombrir"}</button>
+  //     <Profile count={count} profile={profile}/>
+  //   </div>
+  // )
 
   // const [countOne, setCountOne] = useState({value : 0, btnColor : 'success', increment : 25});
   // const [countTwo, setCountTwo] = useState({value : 0, btnColor : 'danger', increment : 20});
