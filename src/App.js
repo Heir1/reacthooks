@@ -1,6 +1,6 @@
 import FunctionCount from "./Components/FunctionCount";
 import Container from "./Components/Container";
-import React,{Component, useState, useCallback, useEffect, useMemo} from "react";
+import React,{Component, useState, useCallback, useEffect, useMemo, useRef} from "react";
 // import Profile from "./Contexte/Profile";
 import {UserContext, ColorContext} from './Contexte/MyContext';
 // import Count from "./Reducers/Count";
@@ -11,15 +11,32 @@ import Profile from "./Memo/Profile";
 import axios from 'axios'
 import Input from "./Ref/Input";
 import Title from "./Ref/Title";
+import FancyInput from "./Imperative/FancyInput";
 
 const App = () => {
 
+  const fancyInput = useRef();
+  const date = new Date();
+
+  const focusInput = (date) => {
+    fancyInput.current.focus(date);
+    console.log(date)
+    fancyInput.current.countMax();
+    console.log(fancyInput.current)
+  }
   return (
       <div className="container">
-        {/* <Title/> */}
-        <Input/>
+        <FancyInput ref={fancyInput} />
+        <button onClick={() => focusInput(date.getDay())}>Cliquer</button>
       </div>
   )
+
+  // return (
+  //     <div className="container">
+  //       {/* <Title/> */}
+  //       <Input/>
+  //     </div>
+  // )
 
   // const [count, setCount] = useState(1);
   // const [profile, setProfile] = useState({});
