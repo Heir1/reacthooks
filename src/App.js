@@ -12,24 +12,33 @@ import axios from 'axios'
 import Input from "./Ref/Input";
 import Title from "./Ref/Title";
 import FancyInput from "./Imperative/FancyInput";
+import Layout from "./Layout/Layout";
+import Box from "./Layout/Box";
 
 const App = () => {
 
-  const fancyInput = useRef();
-  const date = new Date();
-
-  const focusInput = (date) => {
-    fancyInput.current.focus(date);
-    console.log(date)
-    fancyInput.current.countMax();
-    console.log(fancyInput.current)
-  }
-  return (
-      <div className="container">
-        <FancyInput ref={fancyInput} />
-        <button onClick={() => focusInput(date.getDay())}>Cliquer</button>
-      </div>
+  return(
+    <div align="center">
+      <h1>useLayoutEffect </h1>
+      <Box/>
+      {/* <Layout/> */}
+    </div>
   )
+  // const fancyInput = useRef();
+  // const date = new Date();
+
+  // const focusInput = (date) => {
+  //   fancyInput.current.focus(date);
+  //   console.log(date)
+  //   fancyInput.current.countMax();
+  //   console.log(fancyInput.current)
+  // }
+  // return (
+  //     <div className="container">
+  //       <FancyInput ref={fancyInput} />
+  //       <button onClick={() => focusInput(date.getDay())}>Cliquer</button>
+  //     </div>
+  // )
 
   // return (
   //     <div className="container">
